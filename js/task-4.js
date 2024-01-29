@@ -7,11 +7,32 @@
 // Уважно визначайте події у завданнях (попри те, що у т/з є прямі підказки, помилок із цього приводу чимало).
 // 4 завдання -- всі інпути заповнені. Тільки тоді виводимо об’єкт у консоль.
 
+const emailField = document.querySelector(
+  'form.login-form input[name ="email"]'
+);
+const passwordField = document.querySelector(
+  'form.login-form input[name="password"]'
+);
+const submitButton = document.querySelector(
+  'form.login-form button[type="submit"]'
+);
 const form = document.querySelector('.login-form');
 
 function formProcess(event) {
   event.preventDefault();
-  console.log(event);
+  if (emailField.value === '' || passwordField.value === '') {
+    alert('All form fields must be filled in');
+  } else {
+    const userData = {
+      email: emailField.value.trim(),
+      password: passwordField.value.trim(),
+    };
+    console.log(userData);
+  }
 }
 
-form.addEventListener('submit', formProcess);
+function resetForm() {
+  form.reset();
+}
+
+submitButton.addEventListener('click', formProcess);
