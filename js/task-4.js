@@ -13,13 +13,18 @@ const emailField = document.querySelector(
 const passwordField = document.querySelector(
   'form.login-form input[name="password"]'
 );
+
 const submitButton = document.querySelector(
   'form.login-form button[type="submit"]'
 );
+
 const form = document.querySelector('.login-form');
+
+form.addEventListener('submit', formProcess);
 
 function formProcess(event) {
   event.preventDefault();
+
   if (emailField.value === '' || passwordField.value === '') {
     alert('All form fields must be filled in');
   } else {
@@ -28,11 +33,6 @@ function formProcess(event) {
       password: passwordField.value.trim(),
     };
     console.log(userData);
+    form.reset();
   }
 }
-
-function resetForm() {
-  form.reset();
-}
-
-submitButton.addEventListener('click', formProcess);
